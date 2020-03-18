@@ -289,12 +289,119 @@ help(fviz_pca_var)
 Valeurs_Propres<-round(res.pca$eig,2)
 Valeurs_Propres
 
+#********************************************
+    ##### REGRESSION #####
 
-    ##### REGRESSION MULTIPLE #####
-# Régression avec les 3 composantes principales : 
-summary(lm(baseFinal$INS_DEN~res.pca$scores[,1]+res.pca$scores[,2]+res.pca$scores[,3]))
+                          ## REGRESSION MULTIPLE ##
 
-# PCR
+initial_model<-lm(INS_DEN~UNEMP+LITERACY+YOUNG_DEP+URBAN_POP+INFLATION+GNI+FINANC_DEV+OLD_DEP+GDP+URBAN_POP+LIFE_EXP+GOOD_HEALTH,data=baseFinal)
+modele1<-step(initial_model,direction = 'both',criterion='AIC')
+summary(modele1)
+
+# Tests
+# Distance < 1
+par(mar = rep(1, 2))
+par(mfrow=c(1,2))
+par(mfcol=c(1,2))
+dev.new(width=5, height=4)
+plot(cooks.distance(modele1),type="h",ylim = c(0,1))
+
+# ANALYSIS OF THE GRAPHS: MULTIPLE GRAPHS
+par(mar = rep(1, 1))
+dev.new(width=10, height=10)
+plot(modele1)
+reset(modele1)
+vif(modele1)
+bptest(modele1)
+residus<-residuals(modele1)
+shapiro.test(residus)
+
+# En enlevant la variable LIFE_EXP pour régler le problème de colinéarité.
+modele1a<-lm(INS_DEN~UNEMP+GNI+FINANC_DEV+OLD_DEP+YOUNG_DEP+LITERACY+GOOD_HEALTH,data=baseFinal)
+par(mar = rep(1, 1))
+dev.new(width=10, height=10)
+plot(modele1a)
+reset(modele1a)
+vif(modele1a)
+bptest(modele1a)
+residus<-residuals(modele1a)
+shapiro.test(residus)
+
+
+#***************************************************
+# Transformation logarithme de la variable expliquée uniquement
+modele2<-lm(log(INS_DEN)~UNEMP+GNI+FINANC_DEV+OLD_DEP+YOUNG_DEP+LITERACY+GOOD_HEALTH,data=baseFinal)
+par(mar = rep(1, 1))
+dev.new(width=10, height=10)
+plot(modele2)
+
+reset(modele2)
+# p-value = 0.01138 < 0.05. We still do not accept Ho: Linear Functional form of model is not accepted. 
+
+vif(modele2)
+# ok VIF < 10
+
+bptest(modele2)
+# p-value = 0.3162 > 0.05. We accept Ho: homoscedasticity of residues at 5% significant level.
+
+residus<-residuals(modele2)
+shapiro.test(residus)
+# p-value=0.3063 > 0.05. We accept Ho, the residues are following a normal distribution
+
+
+
+#*****************************************************
+# Double-log transformation of GNI variable only
+modele4<-lm(log(INS_DEN)~UNEMP+log(GNI)+FINANC_DEV+OLD_DEP+YOUNG_DEP+GOOD_HEALTH+LITERACY,data=baseFinal)
+
+par(mar = rep(1, 1))
+par(mfrow=c(1,2))
+par(mfcol=c(1,2))
+dev.new(width=10, height=10)
+plot(modele4)
+
+reset(modele4)
+# p-value = 0.3015 > 0.05. We accept the linear functional form of the modele4.
+
+vif(modele4)
+# ok VIF < 10
+
+bptest(modele4)
+# p-value = 0.393 > 0.05. We accept Ho: homoscedasticity of residues at 5% significant level.
+
+residus<-residuals(modele4)
+shapiro.test(residus)
+# p-value=0.4354 > 0.05. We accept Ho, the residues are following a normal distribution
+# Higher than modele 3
+
+residualPlots(modele4)
+
+# MODELE 4 IS OUR SELECTED MODEL
+#***********************************************************
+# ENDOGENEITY TEST
+
+modele4
+
+# From modele4, I suspect that Financial development and Good Health are endogeneous.
+# Since both variables are considered to be not as correlated because they passed the VIF test, I will test endogeneity together.
+# We will use one instrument for each variable.
+
+# To test endogeneity of Financial development
+# Using GDP as instrument
+DMC_modele1<-ivreg(log(INS_DEN)~UNEMP + log(GNI) + FINANC_DEV + OLD_DEP+ YOUNG_DEP+GOOD_HEALTH+LITERACY |UNEMP + log(GNI) + URBAN_POP + OLD_DEP+YOUNG_DEP+LITERACY+ LIFE_EXP,data=baseFinal)
+summary(DMC_modele1,diagnostics = TRUE)
+
+summary(modele4)
+
+
+
+
+
+
+
+
+
+                          ## PCR ##
 X<-as.matrix(baseFinal[3:13])
 assurance.pcr <- pcr(baseFinal$INS_DEN ~ X, ncomp = 3, validation = "LOO", data=baseFinal)
 summary(assurance.pcr)
