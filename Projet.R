@@ -18,7 +18,7 @@ base1
 
 
 
-    ##### Analyse Univari√©e #####
+    ##### Analyse Univari√É¬©e #####
 
 # Toutes les variables sont quantitatives et continues. Incluant la variable Y
 base1$INS_DEN<-as.numeric(base1$INS_DEN)
@@ -43,82 +43,82 @@ par(mfrow=c(1,1))
 par(mfcol=c(1,1))
 histogram<-hist(base1$INS_DEN,
                 xlim=c(0,9000),ylim = c(0,40),
-                main="Distribution_Densit√© de l'assurance-vie",
-                xlab = "Densit√© de l'assurance",
+                main="Distribution_Densit√É¬© de l'assurance-vie",
+                xlab = "Densit√É¬© de l'assurance",
                 border="black",
                 col="lightblue",breaks = 10,cex.main=0.8,cex.lab=0.8)
 
 boxplot(base1[3:13])
 
 
-      ##### Analyse Bivari√©e #####
+      ##### Analyse Bivari√É¬©e #####
 
 # Correlation entre variables en utilisant le test de Spearman
 Data1<-base1[,c("LITERACY","FINANC_DEV","INFLATION","GOOD_HEALTH","URBAN_POP","LIFE_EXP","UNEMP","OLD_DEP","YOUNG_DEP","GDP","GNI","INS_DEN")]
 chart.Correlation(Data1,histogram=TRUE,pch=19,method=c("spearman"))
 corrplot(cor(base1[,2:13]))
 
-# Comparaison entre la variable expliqu√©e et les variables explicatives (analyse individuelle)
+# Comparaison entre la variable expliqu√É¬©e et les variables explicatives (analyse individuelle)
 
 par(mar = rep(4, 4))
 par(mfrow=c(1,1))
-plot(base1$INS_DEN~base1$LITERACY, type = "p",main = "INS_DEN vs LITERACY", xlab = "Taux d'alphab√©tisation", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$LITERACY, type = "p",main = "INS_DEN vs LITERACY", xlab = "Taux d'alphab√É¬©tisation", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$LITERACY),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$GOOD_HEALTH, type = "p",main="INS_DEN vs GOOD_HEALTH", xlab = "% population en bonne sant√©", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$GOOD_HEALTH, type = "p",main="INS_DEN vs GOOD_HEALTH", xlab = "% population en bonne sant√É¬©", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$GOOD_HEALTH),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$URBAN_POP, type = "p",main="INS_DEN vs URBAN_POP", xlab = "% population urbaine", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$URBAN_POP, type = "p",main="INS_DEN vs URBAN_POP", xlab = "% population urbaine", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$URBAN_POP),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$LIFE_EXP, type = "p",main="INS_DEN vs LIFE_EXP", xlab = "Esp√©rance de vie (de la naissance)", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$LIFE_EXP, type = "p",main="INS_DEN vs LIFE_EXP", xlab = "Esp√É¬©rance de vie (de la naissance)", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$LIFE_EXP),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$UNEMP, type = "p",main="INS_DEN vs UNEMP",xlim=c(0,15), xlab = "Taux de ch√¥mage", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$UNEMP, type = "p",main="INS_DEN vs UNEMP",xlim=c(0,15), xlab = "Taux de ch√É¬¥mage", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$UNEMP),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$OLD_DEP, type = "p",main="INS_DEN vs OLD_DEP", xlab = "Ratio de personnes √¢g√©es", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$OLD_DEP, type = "p",main="INS_DEN vs OLD_DEP", xlab = "Ratio de personnes √É¬¢g√É¬©es", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$OLD_DEP),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$INFLATION, type = "p",main="INS_DEN vs INFLATION", xlab = "Taux d'inflation", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$INFLATION, type = "p",main="INS_DEN vs INFLATION", xlab = "Taux d'inflation", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$INFLATION),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$FINANC_DEV, type = "p",main="INS_DEN vs FINANC_DEV", xlab = "D√©veloppement financier (M2/GDP Ratio)", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$FINANC_DEV, type = "p",main="INS_DEN vs FINANC_DEV", xlab = "D√É¬©veloppement financier (M2/GDP Ratio)", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$FINANC_DEV),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$GNI, type = "p",main="INS_DEN vs GNI", xlab = "Revenu national brut par habitant en $US", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$GNI, type = "p",main="INS_DEN vs GNI", xlab = "Revenu national brut par habitant en $US", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$GNI),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$YOUNG_DEP, type = "p",main="INS_DEN vs YOUNG_DEP",xlab = "Ratio de personnes moins de 18ans", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$YOUNG_DEP, type = "p",main="INS_DEN vs YOUNG_DEP",xlab = "Ratio de personnes moins de 18ans", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$YOUNG_DEP),col="red",lwd=2)
 
-plot(base1$INS_DEN~base1$GDP, type = "p",main="INS_DEN vs GDP", xlab = "PIB par habitant en $US", ylab = "Densit√© de l'assurance-vie en $US")
+plot(base1$INS_DEN~base1$GDP, type = "p",main="INS_DEN vs GDP", xlab = "PIB par habitant en $US", ylab = "Densit√É¬© de l'assurance-vie en $US")
 abline(lm(base1$INS_DEN~base1$GDP),col="red",lwd=2)
 
 
 # Relation entre variables explicatives
 
-# N√©gativement corr√©l√©es
+# N√É¬©gativement corr√É¬©l√É¬©es
 plot(OLD_DEP~YOUNG_DEP, main="OLD_DEP vs YOUNG_DEP", xlab = "OLD_DEP", ylab = "YOUNG_DEP",data=base1)
 plot(base1$GNI~base1$INFLATION, type = "p",main="GNI vs INFLATION", xlab = "Taux d'inflation", ylab = "Revenu national brut par habitant en $US")
 abline(lm(base1$GNI~base1$INFLATION),col="red",lwd=2)
 
-# Positivement corr√©l√©es
-plot(base1$GNI~base1$FINANC_DEV, type = "p",main="GNI vs FINANC_DEV", xlab = "D√©veloppement financier (M2/GDP Ratio)", ylab = "Revenu national brut par habitant en $US")
+# Positivement corr√É¬©l√É¬©es
+plot(base1$GNI~base1$FINANC_DEV, type = "p",main="GNI vs FINANC_DEV", xlab = "D√É¬©veloppement financier (M2/GDP Ratio)", ylab = "Revenu national brut par habitant en $US")
 abline(lm(base1$GNI~base1$FINANC_DEV),col="red",lwd=2)
 
 # Autre relations
 plot(base1$GNI~base1$UNEMP, type = "p",main="INITIAL DATA",sub = "GNI vs Unemployment Rate", xlab = "Unemployment rate", ylab = "GNI per capita in US$")
-plot(base1$GDP~base1$UNEMP, type = "p",main="GDP vs UNEMP", ylim=c(0,400000),xlab = "Taux de ch√¥mage", ylab = "PIB par habitant en $US")
-plot(base1$GOOD_HEALTH~base1$LIFE_EXP, type = "p",main="GOOD_HEALTH vs LIFE_EXP", xlab = "Esp√©rance de vie", ylab = "% population en bonne sant√©")
+plot(base1$GDP~base1$UNEMP, type = "p",main="GDP vs UNEMP", ylim=c(0,400000),xlab = "Taux de ch√É¬¥mage", ylab = "PIB par habitant en $US")
+plot(base1$GOOD_HEALTH~base1$LIFE_EXP, type = "p",main="GOOD_HEALTH vs LIFE_EXP", xlab = "Esp√É¬©rance de vie", ylab = "% population en bonne sant√É¬©")
 abline(lm(base1$GOOD_HEALTH~base1$LIFE_EXP),col="red",lwd=2)
-plot(base1$GNI~base1$LIFE_EXP, type = "p",main="GNI vs LIFE_EXP", xlab = "ERevenu national brut par habitant en $US", ylab = "Esp√©rance de vie")
+plot(base1$GNI~base1$LIFE_EXP, type = "p",main="GNI vs LIFE_EXP", xlab = "ERevenu national brut par habitant en $US", ylab = "Esp√É¬©rance de vie")
 abline(lm(base1$GOOD_HEALTH~base1$LIFE_EXP),col="red",lwd=2)
 
 
       ##### DETECTION ET SUPPRESSION DES VALEURS ATYPIQUES #####
 
-# On utilise les boxplots pour detecter les valeurs atypiques. Nous d√©cidons de supprimer les valeurs atypiques dans notre cas, au lieu de faire un 'impute'
+# On utilise les boxplots pour detecter les valeurs atypiques. Nous d√É¬©cidons de supprimer les valeurs atypiques dans notre cas, au lieu de faire un 'impute'
 
 par(mar = rep(4, 4))
 # Pas de valeurs atypiques
@@ -142,9 +142,9 @@ boxplot(base1$GDP,ylim=c(0,100000),xlab="GDP",main="Boxplot: GDP per capita")
 # Pas de valeurs atypiques
 boxplot(base1$YOUNG_DEP,xlab="Ratio of young dependency",main="Boxplot: Ratio of young dependents")
 
-# # Selon le boxplot on assume la pr√©sence de plusieurs valeurs atypiques. Nous utilisons le test 'ESD pour confirmer ce r√©sultat et d√©tecter les valeurs atypiques.
+# # Selon le boxplot on assume la pr√É¬©sence de plusieurs valeurs atypiques. Nous utilisons le test 'ESD pour confirmer ce r√É¬©sultat et d√É¬©tecter les valeurs atypiques.
 boxplot(base1$UNEMP,xlab="Unemployment Rate",main="Boxplot: Unemployment rate")
-# Test ESD au seuil de 5% de tol√©rance.
+# Test ESD au seuil de 5% de tol√É¬©rance.
 y = base1$UNEMP
 rval = function(y){
   ares = abs(y - mean(y))/sd(y)
@@ -173,14 +173,14 @@ for (i in 1:15){
 newdf = data.frame(c(1:15),R,lam)
 names(newdf)=c("No. Outliers","Test Stat.", "Critical Val.")
 newdf
-# Le test ESD confirme la pr√©sence d'une valeur atypique.
+# Le test ESD confirme la pr√É¬©sence d'une valeur atypique.
 sort(base1$UNEMP)
 order(base1$UNEMP)
 # Outliers = 30
 
-# Selon le boxplot on assume la pr√©sence de plusieurs valeurs atypiques. Nous utilisons le test 'ESD' pour confirmer ce r√©sultat et d√©tecter les valeurs atypiques.
+# Selon le boxplot on assume la pr√É¬©sence de plusieurs valeurs atypiques. Nous utilisons le test 'ESD' pour confirmer ce r√É¬©sultat et d√É¬©tecter les valeurs atypiques.
 boxplot(base1$INFLATION,xlab="Inflation Rate",main="Boxplot: Inflation Rate")
-# Test ESD au seuil de 5% de tol√©rance.
+# Test ESD au seuil de 5% de tol√É¬©rance.
 y = base1$INFLATION
 rval = function(y){
   ares = abs(y - mean(y))/sd(y)
@@ -209,12 +209,12 @@ for (i in 1:15){
 newdf = data.frame(c(1:15),R,lam)
 names(newdf)=c("No. Outliers","Test Stat.", "Critical Val.")
 newdf
-# Le test ESD confirme la pr√©sence d'une valeur atypique.
+# Le test ESD confirme la pr√É¬©sence d'une valeur atypique.
 sort(base1$INFLATION)
 order(base1$INFLATION)
 # Outliers = 45
 
-# Selon le boxplot on assume la pr√©sence de plusieurs valeurs atypiques. Nous utilisons le test 'ESD' pour confirmer ce r√©sultat et d√©tecter les valeurs atypiques.
+# Selon le boxplot on assume la pr√É¬©sence de plusieurs valeurs atypiques. Nous utilisons le test 'ESD' pour confirmer ce r√É¬©sultat et d√É¬©tecter les valeurs atypiques.
 boxplot(base1$LITERACY,xlab="% of literate adults",main="Boxplot: Literacy rate")
 y = base1$LITERACY
 rval = function(y){
@@ -244,7 +244,7 @@ for (i in 1:15){
 newdf = data.frame(c(1:15),R,lam)
 names(newdf)=c("No. Outliers","Test Stat.", "Critical Val.")
 newdf
-# Le test ESD confirme la pr√©sence de 2 valeurs atypiques.
+# Le test ESD confirme la pr√É¬©sence de 2 valeurs atypiques.
 sort(base1$LITERACY)
 order(base1$LITERACY)
 # Outliers = 25,31
@@ -259,7 +259,7 @@ grubbs.test(base1$GOOD_HEALTH,type=10,two.sided=TRUE)
 # Outlier = 54.4
 
 baseFinal<-base1[-c(54.4,45,25,31,30),]
-# Les valeurs atypiques repr√©sentent moins de 10% de la base initiale. Ainsi nous d√©cidons de les supprimer afin d'enlever l'√©l√©ment de biais.
+# Les valeurs atypiques repr√É¬©sentent moins de 10% de la base initiale. Ainsi nous d√É¬©cidons de les supprimer afin d'enlever l'√É¬©l√É¬©ment de biais.
 save(baseFinal,file='baseFinal.rda')
 
 
@@ -316,7 +316,7 @@ bptest(modele1)
 residus<-residuals(modele1)
 shapiro.test(residus)
 
-# En enlevant la variable LIFE_EXP pour r√©gler le probl√®me de colin√©arit√©.
+# En enlevant la variable LIFE_EXP pour r√É¬©gler le probl√É¬®me de colin√É¬©arit√É¬©.
 modele1a<-lm(INS_DEN~UNEMP+GNI+FINANC_DEV+OLD_DEP+YOUNG_DEP+LITERACY+GOOD_HEALTH,data=baseFinal)
 par(mar = rep(1, 1))
 dev.new(width=10, height=10)
@@ -329,7 +329,7 @@ shapiro.test(residus)
 
 
 #***************************************************
-# Transformation logarithme de la variable expliqu√©e uniquement
+# Transformation logarithme de la variable expliqu√É¬©e uniquement
 modele2<-lm(log(INS_DEN)~UNEMP+GNI+FINANC_DEV+OLD_DEP+YOUNG_DEP+LITERACY+GOOD_HEALTH,data=baseFinal)
 par(mar = rep(1, 1))
 dev.new(width=10, height=10)
@@ -405,17 +405,17 @@ X<-as.matrix(baseFinal[3:13])
 
 #X[,'GNI'] = log(X[,'GNI']) # prise en compte de la transformation logarithmique de GNI
 
-##Essayer avec ncomp = 10 ou 11 par exemple pour bien faire la validation croisÈe et voir le rÈsulat obtenu
-##Ensuite faire la PCR dÈfinitive avec le ncomp minimisant le CVadj
-##ncomp = 5 sans transformation logarithmique normalement. A voir si Áa reste le cas en appliquant les deux transformations logarithmiques en commentaires !!
+##Essayer avec ncomp = 10 ou 11 par exemple pour bien faire la validation crois√©e et voir le r√©sulat obtenu
+##Ensuite faire la PCR d√©finitive avec le ncomp minimisant le CVadj
+##ncomp = 5 sans transformation logarithmique normalement. A voir si √ßa reste le cas en appliquant les deux transformations logarithmiques en commentaires !!
 
 assurance.pcr <- pcr(baseFinal$INS_DEN ~ X, ncomp = 3, validation = "LOO", data=baseFinal)
 
-#assurance.pcr <- pcr(log(baseFinal$INS_DEN) ~ X, ncomp = 3, validation = "LOO", data=baseFinal) # modËle avec transformation logarithmique de la variable INS_DEN
+#assurance.pcr <- pcr(log(baseFinal$INS_DEN) ~ X, ncomp = 3, validation = "LOO", data=baseFinal) # mod√®le avec transformation logarithmique de la variable INS_DEN
 
 summary(assurance.pcr)
 plot(RMSEP(assurance.pcr), legendpos = "topright")
-# Choisir le nombre de composante en utilisant la validation crois√©e
+# Choisir le nombre de composante en utilisant la validation crois√É¬©e
 msepcv.pcr <- MSEP(assurance.pcr,estimate=c("train","CV"))
 ncomp.pcr <- which.min(msepcv.pcr$val["CV",,])-1
 ncomp.pcr
@@ -444,7 +444,7 @@ names(baseFinal2)[2]="log(INS_DEN)"
 names(baseFinal2)[11]="log(GNI)"
 X2<-as.matrix(baseFinal2[3:13])
 
-#choix du nombre de composantes par validation croisÈe
+#choix du nombre de composantes par validation crois√©e
 
 assurance.pls <- plsr(`log(INS_DEN)` ~ X2, scale=TRUE, validation = "LOO", data=baseFinal2)
 summary(assurance.pls)
@@ -457,24 +457,24 @@ ncomp.onesigma <- selectNcomp(assurance.pls, method = "onesigma", plot = TRUE)
 ncomp.permut <- selectNcomp(assurance.pls, method = "randomization", plot = TRUE)
 ncomp.onesigma
 ncomp.permut
-#les deux mÈthodes suggËrent de garder une seule composante
+#les deux m√©thodes sugg√®rent de garder une seule composante
 ncomp.pls=min(ncomp.onesigma,ncomp.permut)
 
-##Dans la suite, on s'intÈresse donc principalement ‡ la premiËre dimension
+##Dans la suite, on s'int√©resse donc principalement √† la premi√®re dimension
 ##en utilisant soit assurance.pls.final, soit assurance.pls avec ncomp=1
-##on pourra voir si considÈrer d'autres dimensions supplÈmentaires apporterait
-##plus ‡ notre Ètude
+##on pourra voir si consid√©rer d'autres dimensions suppl√©mentaires apporterait
+##plus √† notre √©tude
 
 assurance.pls.final <- plsr(`log(INS_DEN)` ~ X2, ncomp=ncomp.pls, scale=TRUE, validation = "LOO", data=baseFinal2)
 summary(assurance.pls.final)
 
-#test d'hypothËses
+#test d'hypoth√®ses
 
 reset(assurance.pls)
-#p-value = 0.1983 > 0.05 : OK linÈaritÈ du modËle
+#p-value = 0.1983 > 0.05 : OK lin√©arit√© du mod√®le
 
-bptest(assurance.pls) #est-ce utile vu que les donnÈes ont ÈtÈ rÈduites pour faire la pls, je ne sais pas !!
-#p-value = 0.9259 > 0.05 : OK homoscÈdasticitÈ
+bptest(assurance.pls) #est-ce utile vu que les donn√©es ont √©t√© r√©duites pour faire la pls, je ne sais pas !!
+#p-value = 0.9259 > 0.05 : OK homosc√©dasticit√©
 
 #residus<-residuals(assurance.pls.final)
 #shapiro.test(residus)
@@ -483,21 +483,21 @@ residus<-residuals(assurance.pls)
 for (i in 1:11) {
   print(shapiro.test(residus[,,i]))
 }
-#OK hypothËse de normalitÈ de rÈsidus au risque 1%
-#quel que soit le nombre de composantes considÈrÈ.
+#OK hypoth√®se de normalit√© de r√©sidus au risque 1%
+#quel que soit le nombre de composantes consid√©r√©.
 
 
 
 
 ##################################################################
-### Que se passerait-il au niveau des hypothËses si on fait
-### la pls sans les transformations logarithmiques considÈrÈes ?
+### Que se passerait-il au niveau des hypoth√®ses si on fait
+### la pls sans les transformations logarithmiques consid√©r√©es ?
 ##################################################################
 
 assurance.pls.sanslog <- plsr(INS_DEN ~ X, scale=TRUE, validation = "LOO", data=baseFinal)
 summary(assurance.pls.sanslog)
-#on constate dÈj‡ une dÈtÈrioration des performances de ce modËle par rapport au prÈcÈdent
-#la capacitÈ explicative de la variance de Y a beacoup baissÈ.
+#on constate d√©j√† une d√©t√©rioration des performances de ce mod√®le par rapport au pr√©c√©dent
+#la capacit√© explicative de la variance de Y a beacoup baiss√©.
 
 plot(RMSEP(assurance.pls.sanslog), legendpos = "topright")
 
@@ -507,45 +507,45 @@ ncomp.onesigma.sanslog <- selectNcomp(assurance.pls.sanslog, method = "onesigma"
 ncomp.permut.sanslog <- selectNcomp(assurance.pls.sanslog, method = "randomization", plot = TRUE)
 ncomp.onesigma.sanslog
 ncomp.permut.sanslog
-#les deux mÈthodes suggËrent de garder toujours une seule composante
+#les deux m√©thodes sugg√®rent de garder toujours une seule composante
 
-#test d'hypothËses
+#test d'hypoth√®ses
 
 reset(assurance.pls.sanslog)
-#p-value = 0.002029 < 0.01 < 0.05 : On rejete l'hypothËse nulle : le modËle n'est pas linÈaire.
-#on a donc perdu la linÈaritÈ vÈrifiÈe dans le modËle utilisant les transformations logarithmiques
+#p-value = 0.002029 < 0.01 < 0.05 : On rejete l'hypoth√®se nulle : le mod√®le n'est pas lin√©aire.
+#on a donc perdu la lin√©arit√© v√©rifi√©e dans le mod√®le utilisant les transformations logarithmiques
 
-bptest(assurance.pls.sanslog) #est-ce utile vu que les donnÈes ont ÈtÈ rÈduites pour faire la pls, je ne sais pas !!
-#p-value = 0.03368 > 0.01 : OK homoscÈdasticitÈ mais plus au risque 5% aussi comme dans le cas prÈcÈdent.
-#les donnÈes Ètant rÈduites lors de la pls, ce n'est pas ce test qui fera la diffÈrence
+bptest(assurance.pls.sanslog) #est-ce utile vu que les donn√©es ont √©t√© r√©duites pour faire la pls, je ne sais pas !!
+#p-value = 0.03368 > 0.01 : OK homosc√©dasticit√© mais plus au risque 5% aussi comme dans le cas pr√©c√©dent.
+#les donn√©es √©tant r√©duites lors de la pls, ce n'est pas ce test qui fera la diff√©rence
 
 residus.sanslog<-residuals(assurance.pls.sanslog)
 #shapiro.test(residus.sanslog[,,1])
 for (i in 1:11) {
   print(shapiro.test(residus.sanslog[,,i]))
 }
-#HypothËse de normalitÈ de rÈsidus non vÈrifiÈe au risque 1% et 5%
-#quand on considËre 1, 2 ou 3 composantes.
-#Elle n'est vÈrifiÈe qu'‡ partir de 4 composantes au risque 1%
-#Ici encore la qualitÈ du modËle a ÈtÈ dÈtriorÈe. Et si on doit se limiter 
-#‡ moins de 4 composantes comme c'est le cas, on ne peut donc pas satisfaire cette hypothËse
+#Hypoth√®se de normalit√© de r√©sidus non v√©rifi√©e au risque 1% et 5%
+#quand on consid√®re 1, 2 ou 3 composantes.
+#Elle n'est v√©rifi√©e qu'√† partir de 4 composantes au risque 1%
+#Ici encore la qualit√© du mod√®le a √©t√© d√©trior√©e. Et si on doit se limiter 
+#√† moins de 4 composantes comme c'est le cas, on ne peut donc pas satisfaire cette hypoth√®se
 
 
 ######################################################################################################
-### Il est clair que les transformations logarithmiques utilisÈes pour la PLS sont pertinentes
-### pour satisfaire les hypothËses de linÈraitÈ du modËle et de normalitÈ des rÈsidus.
-### De plus, la variabilitÈ expliquÈe est nettement meilleure.
-### La seule chose ‡ vÈrifier peut-Ítre plus tard serait de voir si on ne pouvait pas se limiter
-### au passage au log juste pour la variable rÈponse. Ce qui est s˚r, les hypothËses sont vÈrifiÈes 
-### et garder les deux log permet d'avoir un modËle proche de celui du MCO mais avec plus des variables
+### Il est clair que les transformations logarithmiques utilis√©es pour la PLS sont pertinentes
+### pour satisfaire les hypoth√®ses de lin√©rait√© du mod√®le et de normalit√© des r√©sidus.
+### De plus, la variabilit√© expliqu√©e est nettement meilleure.
+### La seule chose √† v√©rifier peut-√™tre plus tard serait de voir si on ne pouvait pas se limiter
+### au passage au log juste pour la variable r√©ponse. Ce qui est s√ªr, les hypoth√®ses sont v√©rifi√©es 
+### et garder les deux log permet d'avoir un mod√®le proche de celui du MCO mais avec plus des variables
 ########################################################################################################
 
 
 
-#On continue donc l'Ètude avec la PLS faisant intervenir les logarithmes
+#On continue donc l'√©tude avec la PLS faisant intervenir les logarithmes
 
 
-##CorrÈlation :
+##Corr√©lation :
 
 #signification des axes : loadings
 
@@ -556,7 +556,7 @@ plot(assurance.pls.final, comps = 1, plottype = "loadings", legendpos="bottomlef
 plot(assurance.pls, plottype = "loadings", legendpos="bottomright", labels="names", xlab="variables")
 plot(assurance.pls, comps = 1:3, plottype = "loadings", legendpos="bottomright", labels="names", xlab="variables", ylab="X loadings",ylim=c(-1,0.7))
 
-#cercles de corrÈlation
+#cercles de corr√©lation
 
 par(mfrow=c(1,2))
 plot(assurance.pls, plottype = "correlation")#,labels = "names")
@@ -567,7 +567,7 @@ plot(assurance.pls, plottype = "correlation",comps=c(2,3))
 plot(assurance.pls, plottype = "correlation",comps=c(2,3),labels = "names")
 
 
-#contribution des axes ‡ la rÈponse : Yloadings
+#contribution des axes √† la r√©ponse : Yloadings
 round(Yloadings(assurance.pls)[,1:3],2)
 
 #Scores
@@ -579,12 +579,12 @@ plot(assurance.pls, plottype = "scores",comps=c(1,3),labels = "names")
 plot(assurance.pls, plottype = "scores",comps=c(2,3))
 plot(assurance.pls, plottype = "scores",comps=c(2,3),labels = "names")
 
-#plots non utilisÈs
+#plots non utilis√©s
 plot(assurance.pls$Yscores,comps=c(1,2),labels = "names")
 plot(assurance.pls$Yscores,comps=c(1,3),labels = "names")
 plot(assurance.pls$Yscores,comps=c(2,3),labels = "names")
 
-#prÈdictions
+#pr√©dictions
 plot(assurance.pls, plottype = "prediction")#,labels = "names")
 abline(reg=assurance.pls)
 
@@ -604,57 +604,57 @@ plot(assurance.pls, plottype = "coef", ncomp=1:3,labels = "names", legendpos = "
 
 
 #*****************************************************************************
-#                   PCR avec test de diffÈrentes transformations
+#                   PCR avec test de diff√©rentes transformations
 #*****************************************************************************
 
-# PCR sans transformations logarithmiques : Ètude du modËle
+# PCR sans transformations logarithmiques : √©tude du mod√®le
 
 #choix du nombre de composantes
 
 assurance.pcr <- pcr(INS_DEN ~ X, scale = TRUE, validation = "LOO", data=baseFinal)
 summary(assurance.pcr)
 plot(RMSEP(assurance.pcr), legendpos = "topright")
-# Choisir le nombre de composante en utilisant la validation crois√©e
+# Choisir le nombre de composante en utilisant la validation crois√É¬©e
 msepcv.pcr <- MSEP(assurance.pcr,estimate=c("train","CV"))
 ncomp.pcr <- which.min(msepcv.pcr$val["CV",,])-1
 ncomp.pcr 
-#on trouve 11 : pas pertinent. On peut dÈj‡ se limiter ‡ 4 (premier minimum local proche du minimum global)
-#ou choisir 3 pour des raisons de variances expliquÈs de Y pas trop diffÈrentes entre 3 et 4 et des PRESS proches
-#Sinon on essaye la fonction selectNcomp avec ses deux mÈthodes :
+#on trouve 11 : pas pertinent. On peut d√©j√† se limiter √† 4 (premier minimum local proche du minimum global)
+#ou choisir 3 pour des raisons de variances expliqu√©s de Y pas trop diff√©rentes entre 3 et 4 et des PRESS proches
+#Sinon on essaye la fonction selectNcomp avec ses deux m√©thodes :
 
 ncomp.onesigma <- selectNcomp(assurance.pcr, method = "onesigma", plot = TRUE)
 ncomp.permut <- selectNcomp(assurance.pcr, method = "randomization", plot = TRUE)
 ncomp.onesigma
 ncomp.permut
-#la prmiËre mÈthode sugËre de garder pl˚tot 3 composantes, la deuxiËme une seule.
-#on peut donc considÈrer 3 composantes dans la suite si on veut et les justifier
-#comme combinaison PRESS + ces 2 mÈthodes + variance Y
+#la prmi√®re m√©thode sug√®re de garder pl√ªtot 3 composantes, la deuxi√®me une seule.
+#on peut donc consid√©rer 3 composantes dans la suite si on veut et les justifier
+#comme combinaison PRESS + ces 2 m√©thodes + variance Y
 
-#Test d'hypothËses
+#Test d'hypoth√®ses
 
 reset(assurance.pcr)
-#p-value = 0.002029 < 0.01 < 0.05 : On rejete l'hypothËse nulle : le modËle n'est pas linÈaire.
-#on a donc perdu la linÈaritÈ vÈrifiÈe dans le modËle utilisant les transformations logarithmiques
-#mÍme rÈsultat que pour PLS
+#p-value = 0.002029 < 0.01 < 0.05 : On rejete l'hypoth√®se nulle : le mod√®le n'est pas lin√©aire.
+#on a donc perdu la lin√©arit√© v√©rifi√©e dans le mod√®le utilisant les transformations logarithmiques
+#m√™me r√©sultat que pour PLS
 
-bptest(assurance.pcr) #est-ce utile vu que les donnÈes ont ÈtÈ rÈduites pour faire la pls, je ne sais pas !!
-#p-value = 0.03368 > 0.01 : OK homoscÈdasticitÈ mais plus au risque 5% aussi comme dans le cas prÈcÈdent.
-#les donnÈes Ètant rÈduites lors de la pls, ce n'est pas ce test qui fera la diffÈrence
+bptest(assurance.pcr) #est-ce utile vu que les donn√©es ont √©t√© r√©duites pour faire la pls, je ne sais pas !!
+#p-value = 0.03368 > 0.01 : OK homosc√©dasticit√© mais plus au risque 5% aussi comme dans le cas pr√©c√©dent.
+#les donn√©es √©tant r√©duites lors de la pls, ce n'est pas ce test qui fera la diff√©rence
 #pareil aussi
 
 residus<-residuals(assurance.pcr)
 shapiro.test(residus[,,3])
-#p-value = 8.503e-06 << 0.01 : pas de normalitÈ de rÈsidus.
+#p-value = 8.503e-06 << 0.01 : pas de normalit√© de r√©sidus.
 
 
-#Passage au log pour la variable dÈpendante uniquement puis on refait les mÍmes Ètapes
+#Passage au log pour la variable d√©pendante uniquement puis on refait les m√™mes √©tapes
 
 assurance.pcr <- pcr(log(INS_DEN) ~ X, scale = TRUE, validation = "LOO", data=baseFinal)
 summary(assurance.pcr)
-#on remarque une nette amÈlioration de la variance expliquÈe pour log(INS_DEN)
+#on remarque une nette am√©lioration de la variance expliqu√©e pour log(INS_DEN)
 
 plot(RMSEP(assurance.pcr), legendpos = "topright")
-# Choisir le nombre de composante en utilisant la validation crois√©e
+# Choisir le nombre de composante en utilisant la validation crois√É¬©e
 msepcv.pcr <- MSEP(assurance.pcr,estimate=c("train","CV"))
 ncomp.pcr <- which.min(msepcv.pcr$val["CV",,])-1
 ncomp.pcr 
@@ -664,62 +664,62 @@ ncomp.onesigma <- selectNcomp(assurance.pcr, method = "onesigma", plot = TRUE)
 ncomp.permut <- selectNcomp(assurance.pcr, method = "randomization", plot = TRUE)
 ncomp.onesigma
 ncomp.permut
-#ces deux mÈthodes sggËrent 1 composante.
-#si ce modËle convient, on gardera plutÙt trois composantes pour plus de variances expliquÈes 
+#ces deux m√©thodes sgg√®rent 1 composante.
+#si ce mod√®le convient, on gardera plut√¥t trois composantes pour plus de variances expliqu√©es 
 
-#Test d'hypothËses
+#Test d'hypoth√®ses
 
 reset(assurance.pcr)
-#p-value = 0.001586 < 0.01 < 0.05 : On rejete l'hypothËse nulle : le modËle n'est pas linÈaire.
-#pas toujours de linÈaritÈ malhreusement
+#p-value = 0.001586 < 0.01 < 0.05 : On rejete l'hypoth√®se nulle : le mod√®le n'est pas lin√©aire.
+#pas toujours de lin√©arit√© malhreusement
 
-bptest(assurance.pcr) #est-ce utile vu que les donnÈes ont ÈtÈ rÈduites pour faire la pls, je ne sais pas !!
-#p-value = 0.9071 > 0.01 : OK homoscÈdasticitÈ toujours
+bptest(assurance.pcr) #est-ce utile vu que les donn√©es ont √©t√© r√©duites pour faire la pls, je ne sais pas !!
+#p-value = 0.9071 > 0.01 : OK homosc√©dasticit√© toujours
 
 residus<-residuals(assurance.pcr)
 shapiro.test(residus[,,3])
-#p-value = 0.4213 > 0.05 : OK normalitÈ de rÈsidus.
+#p-value = 0.4213 > 0.05 : OK normalit√© de r√©sidus.
 
 
-#Passage au log pour GNI Ègalement
+#Passage au log pour GNI √©galement
 
 assurance.pcr <- pcr(`log(INS_DEN)` ~ X2, scale=TRUE, validation = "LOO", data=baseFinal2)
 summary(assurance.pcr)
-#on remarque une nouvelle amÈlioration de la variance expliquÈe pour log(INS_DEN) et pour X
+#on remarque une nouvelle am√©lioration de la variance expliqu√©e pour log(INS_DEN) et pour X
 
 plot(RMSEP(assurance.pcr), legendpos = "topright")
-# Choisir le nombre de composante en utilisant la validation crois√©e
+# Choisir le nombre de composante en utilisant la validation crois√É¬©e
 msepcv.pcr <- MSEP(assurance.pcr,estimate=c("train","CV"))
 ncomp.pcr <- which.min(msepcv.pcr$val["CV",,])-1
 ncomp.pcr 
-#on trouve 3 composantes toujours : on va utiliser le critËre PRESS immÈdiatement ici
+#on trouve 3 composantes toujours : on va utiliser le crit√®re PRESS imm√©diatement ici
 
-#pour info : les deux autres mÈthodes
+#pour info : les deux autres m√©thodes
 ncomp.onesigma <- selectNcomp(assurance.pcr, method = "onesigma", plot = TRUE)
 ncomp.permut <- selectNcomp(assurance.pcr, method = "randomization", plot = TRUE)
 ncomp.onesigma
 ncomp.permut
-#ces deux mÈthodes suggËrent 1 composante encore.
+#ces deux m√©thodes sugg√®rent 1 composante encore.
 
-#Test d'hypothËses
+#Test d'hypoth√®ses
 
 reset(assurance.pcr)
-#p-value = 0.1983 > 0.05 : On ne rejete plus l'hypothËse nulle : le modËle est linÈaire.
+#p-value = 0.1983 > 0.05 : On ne rejete plus l'hypoth√®se nulle : le mod√®le est lin√©aire.
 
 bptest(assurance.pcr)
-#p-value = 0.9259 > 0.01 : OK homoscÈdasticitÈ toujours
+#p-value = 0.9259 > 0.01 : OK homosc√©dasticit√© toujours
 
 residus<-residuals(assurance.pcr)
 shapiro.test(residus[,,3])
-#p-value = 0.2178 > 0.05 : OK normalitÈ de rÈsidus.
+#p-value = 0.2178 > 0.05 : OK normalit√© de r√©sidus.
 
-#Toutes les hypothËses Ètant vÈrifiÈes dÈsormais, nous gardons ce modËle.
+#Toutes les hypoth√®ses √©tant v√©rifi√©es d√©sormais, nous gardons ce mod√®le.
 
 
 coef(assurance.pcr, ncomp = 3) #, intercept = TRUE)
 plot(assurance.pcr, plottype = "correlation", ncomp=1:2)
 plot(assurance.pcr, plottype = "correlation", ncomp=1:2,labels = "names")
-title(main = "Cercle de corrÈlation plan 1-2")
+title(main = "Cercle de corr√©lation plan 1-2")
 plot(assurance.pcr, plottype = "correlation", ncomp=1:3)
 plot(assurance.pcr, plottype = "correlation", ncomp=1:3,labels = "names")
 plot(assurance.pcr, plottype = "correlation", ncomp=2:3)
@@ -731,11 +731,14 @@ plot(assurance.pcr, plottype = "scores")#,labels = "names")
 title(main = "Scores plan 1-2")
 plot(assurance.pcr, plottype = "scores",labels = "names")
 title(main = "Scores plan 1-2")
-plot(assurance.pls, plottype = "scores",comps=c(1,3))
-plot(assurance.pls, plottype = "scores",comps=c(1,3),labels = "names")
-plot(assurance.pls, plottype = "scores",comps=c(2,3))
-plot(assurance.pls, plottype = "scores",comps=c(2,3),labels = "names")
+plot(assurance.pcr, plottype = "scores",comps=c(1,3))
+plot(assurance.pcr, plottype = "scores",comps=c(1,3),labels = "names")
+plot(assurance.pcr, plottype = "scores",comps=c(2,3))
+plot(assurance.pcr, plottype = "scores",comps=c(2,3),labels = "names")
 
-#prÈdictions
-predict(assurance.pls, ncomp=3, newdata=baseFinal2)
-plot(assurance.pls, ncomp=3, asp=1, line=TRUE)
+#pr√©dictions
+predict(assurance.pcr, ncomp=3, newdata=baseFinal2)
+plot(assurance.pcr, ncomp=3, asp=1, line=TRUE)
+
+# loadings pcr
+round(loadings(assurance.pcr)[,1:3],2)
