@@ -13,7 +13,7 @@ library('corrplot')
 library(pls)
 
 
-base1<-read_excel("Base_Final_R2.xlsx")
+base1 <- read_excel("Base_Final_R2.xlsx")
 base1
 
 
@@ -21,18 +21,18 @@ base1
     ##### Analyse UnivariÃ©e #####
 
 # Toutes les variables sont quantitatives et continues. Incluant la variable Y
-base1$INS_DEN<-as.numeric(base1$INS_DEN)
-base1$LITERACY<-as.numeric(base1$LITERACY)
-base1$GOOD_HEALTH<-as.numeric(base1$GOOD_HEALTH)
-base1$URBAN_POP<-as.numeric(base1$URBAN_POP)
-base1$LIFE_EXP<-as.numeric(base1$LIFE_EXP)
-base1$UNEMP<-as.numeric(base1$UNEMP)
-base1$OLD_DEP<-as.numeric(base1$OLD_DEP)
-base1$INFLATION<-as.numeric(base1$INFLATION)
-base1$FINANC_DEV<-as.numeric(base1$FINANC_DEV)
-base1$GNI<-as.numeric(base1$GNI)
-base1$GDP<-as.numeric(base1$GDP)
-base1$YOUNG_DEP<-as.numeric(base1$YOUNG_DEP)
+base1$INS_DEN <- as.numeric(base1$INS_DEN)
+base1$LITERACY <- as.numeric(base1$LITERACY)
+base1$GOOD_HEALTH <- as.numeric(base1$GOOD_HEALTH)
+base1$URBAN_POP <- as.numeric(base1$URBAN_POP)
+base1$LIFE_EXP <- as.numeric(base1$LIFE_EXP)
+base1$UNEMP <- as.numeric(base1$UNEMP)
+base1$OLD_DEP <- as.numeric(base1$OLD_DEP)
+base1$INFLATION <- as.numeric(base1$INFLATION)
+base1$FINANC_DEV <- as.numeric(base1$FINANC_DEV)
+base1$GNI <- as.numeric(base1$GNI)
+base1$GDP <- as.numeric(base1$GDP)
+base1$YOUNG_DEP <- as.numeric(base1$YOUNG_DEP)
 
 str(base1)
 summary(base1)
@@ -41,7 +41,7 @@ summary(base1)
 par(mar = rep(1, 2))
 par(mfrow=c(1,1))
 par(mfcol=c(1,1))
-histogram<-hist(base1$INS_DEN,
+histogram <- hist(base1$INS_DEN,
                 xlim=c(0,9000),ylim = c(0,40),
                 main="Distribution_DensitÃ© de l'assurance-vie",
                 xlab = "DensitÃ© de l'assurance",
@@ -54,7 +54,7 @@ boxplot(base1[3:13])
       ##### Analyse BivariÃ©e #####
 
 # Correlation entre variables en utilisant le test de Spearman
-Data1<-base1[,c("LITERACY","FINANC_DEV","INFLATION","GOOD_HEALTH","URBAN_POP","LIFE_EXP","UNEMP","OLD_DEP","YOUNG_DEP","GDP","GNI","INS_DEN")]
+Data1 <- base1[,c("LITERACY","FINANC_DEV","INFLATION","GOOD_HEALTH","URBAN_POP","LIFE_EXP","UNEMP","OLD_DEP","YOUNG_DEP","GDP","GNI","INS_DEN")]
 chart.Correlation(Data1,histogram=TRUE,pch=19,method=c("spearman"))
 corrplot(cor(base1[,2:13]))
 
@@ -288,14 +288,46 @@ help(fviz_pca_var)
 
 Valeurs_Propres<-round(res.pca$eig,2)
 Valeurs_Propres
+ 
+### Classification Ascendante Hierarchique
+
+res.hcpc = HCPC(res.pca, nb.clust = 3, graph = TRUE)
+res.hcpc = HCPC(res.pca, nb.clust = 4, graph = TRUE)
+
+
+fviz_dend(res.hcpc, 
+          palette = "jco",               # Palette de couleurs
+          rect = TRUE, rect_fill = TRUE, # Rectangle autour des groupes
+          rect_border = "jco",           # Couleur du rectangle
+          labels_track_height = 0.8      # Augment l'espace pour le texte
+)
+
+
+fviz_cluster(res.hcpc,
+             repel = TRUE,            # Evite le chevauchement des textes
+             show.clust.cent = TRUE, # Montre le centre des clusters
+             palette = "jco",         # Palette de couleurs
+             ggtheme = theme_minimal(),
+             main = "Factor map"
+)
+plot(res.hcpc, choice = "3D.map")
+
+x = res.hcpc[["data.clust"]][["clust"]]
+y = baseFinal[1]
+df <- melt(data.frame(y,x))
+colnames(df) <- c('pays', 'cluster')
+print(df)
+
+
+
 
 #********************************************
     ##### REGRESSION #####
 
                           ## REGRESSION MULTIPLE ##
 
-initial_model<-lm(INS_DEN~UNEMP+LITERACY+YOUNG_DEP+URBAN_POP+INFLATION+GNI+FINANC_DEV+OLD_DEP+GDP+URBAN_POP+LIFE_EXP+GOOD_HEALTH,data=baseFinal)
-modele1<-step(initial_model,direction = 'both',criterion='AIC')
+initial_model <- lm(INS_DEN~UNEMP+LITERACY+YOUNG_DEP+URBAN_POP+INFLATION+GNI+FINANC_DEV+OLD_DEP+GDP+URBAN_POP+LIFE_EXP+GOOD_HEALTH,data=baseFinal)
+modele1 <- step(initial_model,direction = 'both',criterion='AIC')
 summary(modele1)
 
 # Tests
